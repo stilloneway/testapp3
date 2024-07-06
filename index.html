@@ -13,55 +13,50 @@ body {
   width: 100vw;
   color: #ffffff;
   background-color: black;
-  margin: 0rem;
+  margin: 0;
   overflow: hidden;
 }
-h1 {
-            font-family: 'Roboto', sans-serif;
-            color: #ffffff;
-            margin-bottom: 10px;
-            text-align: center;
+h1, h2, h3 {
+  font-family: 'Roboto', sans-serif;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 10px;
 }
 h2 {
-            font-family: 'Roboto', sans-serif;
-            color: #ffffff;
-            margin-bottom: 10px;
-            text-align: center;
-            align-items: center;
-            bottom: 10px;
-            gap: 5px;
-            left: 10px;
-            padding: 10px 20px;
-            position: fixed;
-            font-size: 1.2em;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  padding: 10px 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
+  font-size: 1em;
 }
 h3 {
-            font-family: "Shadows Into Light", cursive;
-            font-size: 2.5em;
-            color: #ffffff;
-            margin-bottom: 10px;
-            text-align: center;
+  font-family: "Shadows Into Light", cursive;
+  font-size: 2em;
 }
 p {
-            font-size: 1.2em;
-            line-height: 1.6em;
-            margin-bottom: 20px;
+  font-size: 1em;
+  line-height: 1.4em;
+  margin-bottom: 20px;
+  text-align: center;
+  padding: 0 10px;
 }
 .navigation {
-            margin-top: 20px;
+  margin-top: 20px;
+  text-align: center;
 }
 .navigation a {
-            text-decoration: none;
-            color: white;
-            background-color: #007BFF;
-            padding: 10px 20px;
-            margin: 10px;
-            border-radius: 5px;
+  text-decoration: none;
+  color: white;
+  background-color: #007BFF;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 5px;
 }
 .navigation a:hover {
-            background-color: #0056b3;
+  background-color: #0056b3;
 }
-
 #image-track {
   display: flex;
   gap: 4vmin;
@@ -71,32 +66,24 @@ p {
   transform: translate(0%, -50%); 
   user-select: none; /* -- Prevent image highlighting -- */
 }
-
 #image-track > .image {
   width: 40vmin;
   height: 56vmin;
   object-fit: cover;
   object-position: 100% center;
 }
-
-/* -- YouTube Link Styles -- */
-
 body.menu-toggled > .meta-link > span {
   color: rgb(30, 30, 30);
 }
-
 #source-link {
   bottom: 60px;
 }
-
 #source-link > i {
   color: rgb(94, 106, 210);
 }
-
 #yt-link > i {
   color: rgb(239, 83, 80);
 }
-
 .meta-link {
   align-items: center;
   backdrop-filter: blur(3px);
@@ -115,28 +102,64 @@ body.menu-toggled > .meta-link > span {
   transition: background-color 400ms, border-color 400ms;
   z-index: 10000;
 }
-
 .meta-link:hover {
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
-
 .meta-link > i, .meta-link > span {
   height: 20px;
   line-height: 20px;
 }
-
 .meta-link > span {
   color: white;
   font-family: "Rubik", sans-serif;
   font-weight: 500;
-} 
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  h2 {
+    font-size: 0.9em;
+    padding: 8px 16px;
+  }
+  h3 {
+    font-size: 1.8em;
+  }
+  p {
+    font-size: 0.9em;
+  }
+  #image-track > .image {
+    width: 60vmin;
+    height: 84vmin;
+  }
+}
+@media (max-width: 480px) {
+  h2 {
+    font-size: 0.8em;
+    padding: 6px 12px;
+  }
+  h3 {
+    font-size: 1.6em;
+  }
+  p {
+    font-size: 0.8em;
+  }
+  #image-track {
+    flex-direction: column;
+    align-items: center;
+    transform: translate(-50%, 0%);
+  }
+  #image-track > .image {
+    width: 80vmin;
+    height: 112vmin;
+  }
+}
     </style>
 </head>
 <body>
     <h3>Daniel's Gallery</h3>
     <h1>Capturing Joy, Hope, and Trust</h1>
-    <p1><br></p1>
+    <p>Hello! I'm Daniel Heo, and I have a passion for photography and enjoying the beautiful moments of life. Through my lens, I capture the essence of everyday experiences and the beauty of the world around us.</p>
     <div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
         <img class="image" src="https://app2.pospirit.com/img/IMG_7741aw.jpg" draggable="false" />
         <img class="image" src="https://app2.pospirit.com/img/IMG_7154bw.jpg" draggable="false" />
@@ -145,73 +168,50 @@ body.menu-toggled > .meta-link > span {
         <img class="image" src="https://app2.pospirit.com/img/IMG_7874aw.jpg" draggable="false" />
         <img class="image" src="https://app2.pospirit.com/img/IMG_79272w.jpg" draggable="false" />
         <img class="image" src="https://app2.pospirit.com/img/IMG_88065w.jpg" draggable="false" />
-      </div>
+    </div>
 
-      <!-- <a id="source-link" class="meta-link" href="https://camillemormal.com" target="_blank">
-        <i class="fa-solid fa-link"></i>
-        <span>Source</span>
-      </a>
+    <script>
+    const track = document.getElementById("image-track");
+
+    const handleOnDown = e => track.dataset.mouseDownAt = e.clientX;
+
+    const handleOnUp = () => {
+      track.dataset.mouseDownAt = "0";  
+      track.dataset.prevPercentage = track.dataset.percentage;
+    }
+
+    const handleOnMove = e => {
+      if(track.dataset.mouseDownAt === "0") return;
       
-      <a id="yt-link" class="meta-link" href="https://youtu.be/PkADl0HubMY" target="_blank">
-        <i class="fa-brands fa-youtube"></i>
-        <span>7 min tutorial</span>
-      </a> -->
+      const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX,
+            maxDelta = window.innerWidth / 2;
+      
+      const percentage = (mouseDelta / maxDelta) * -100,
+            nextPercentageUnconstrained = parseFloat(track.dataset.prevPercentage) + percentage,
+            nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
+      
+      track.dataset.percentage = nextPercentage;
+      
+      track.animate({
+        transform: `translate(${nextPercentage}%, -50%)`
+      }, { duration: 1200, fill: "forwards" });
+      
+      for(const image of track.getElementsByClassName("image")) {
+        image.animate({
+          objectPosition: `${100 + nextPercentage}% center`
+        }, { duration: 1200, fill: "forwards" });
+      }
+    }
 
-      <h2>Hello! I'm Daniel Heo, and I have a passion for photography and enjoying the beautiful moments of life. Through my lens, I capture the essence of everyday experiences and the beauty of the world around us.<br></h2>
-        
-      <!-- <div class="meta-link" target="_blank">
-          <p><a href="https://app2.pospirit.com/main.html">Login</a></p>
-          <p><a href="https://app2.pospirit.com/signup.html">Sign Up</a></p>
-          <p1><br></p1>
-      </div> -->
+    /* -- Had to add extra lines for touch events -- */
 
-      <script>
-      const track = document.getElementById("image-track");
-
-const handleOnDown = e => track.dataset.mouseDownAt = e.clientX;
-
-const handleOnUp = () => {
-  track.dataset.mouseDownAt = "0";  
-  track.dataset.prevPercentage = track.dataset.percentage;
-}
-
-const handleOnMove = e => {
-  if(track.dataset.mouseDownAt === "0") return;
-  
-  const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX,
-        maxDelta = window.innerWidth / 2;
-  
-  const percentage = (mouseDelta / maxDelta) * -100,
-        nextPercentageUnconstrained = parseFloat(track.dataset.prevPercentage) + percentage,
-        nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
-  
-  track.dataset.percentage = nextPercentage;
-  
-  track.animate({
-    transform: `translate(${nextPercentage}%, -50%)`
-  }, { duration: 1200, fill: "forwards" });
-  
-  for(const image of track.getElementsByClassName("image")) {
-    image.animate({
-      objectPosition: `${100 + nextPercentage}% center`
-    }, { duration: 1200, fill: "forwards" });
-  }
-}
-
-/* -- Had to add extra lines for touch events -- */
-
-window.onmousedown = e => handleOnDown(e);
-
-window.ontouchstart = e => handleOnDown(e.touches[0]);
-
-window.onmouseup = e => handleOnUp(e);
-
-window.ontouchend = e => handleOnUp(e.touches[0]);
-
-window.onmousemove = e => handleOnMove(e);
-
-window.ontouchmove = e => handleOnMove(e.touches[0]);
-      </script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    window.onmousedown = e => handleOnDown(e);
+    window.ontouchstart = e => handleOnDown(e.touches[0]);
+    window.onmouseup = e => handleOnUp(e);
+    window.ontouchend = e => handleOnUp(e.touches[0]);
+    window.onmousemove = e => handleOnMove(e);
+    window.ontouchmove = e => handleOnMove(e.touches[0]);
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 </body>
 </html>
